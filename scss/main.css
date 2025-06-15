@@ -13,8 +13,10 @@ body {
 
 h1 {
   font-size: 2rem;
-  padding-bottom: 1rem;
+  padding-bottom: 1.5rem;
+  padding-top: 0.5rem;
   color: #656464;
+  text-align: center;
 }
 h1 i.fas {
   color: inherit;

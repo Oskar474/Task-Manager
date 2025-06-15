@@ -16,9 +16,10 @@ body {
 
 h1 {
   font-size: 2rem;
-  padding-bottom: $spacing;
+  padding-bottom: $spacing*1.5;
+  padding-top: $spacing/2;
   color: #656464;
-
+  text-align:center;
   i.fas {
     color: inherit;
   }
