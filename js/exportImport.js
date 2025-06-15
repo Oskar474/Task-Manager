@@ -3,7 +3,7 @@ import {saveTasks} from './storage.js';
 export function exportTasks() {
     const raw = localStorage.getItem('todo-list');
     const tasks = raw ? JSON.parse(raw) : [];
-    const json = JSON.stringify(tasks, null, 2); // pretty print
+    const json = JSON.stringify(tasks, null, 2);
     const blob = new Blob([json], {type: 'application/json'});
     const url = URL.createObjectURL(blob);
 
@@ -15,7 +15,7 @@ export function exportTasks() {
     URL.revokeObjectURL(url);
 }
 
-function readFileAsText(file) {
+function readFile(file) {
     return new Promise((resolve, reject) => {
         const reader = new FileReader();
         reader.onload = () => resolve(reader.result);
@@ -29,7 +29,7 @@ export async function importTasks(event) {
     if (!file) return;
 
     try {
-        const content = await readFileAsText(file);
+        const content = await readFile(file);
         const data = JSON.parse(content);
 
         if (!Array.isArray(data)) {

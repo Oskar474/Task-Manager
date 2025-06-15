@@ -51,7 +51,7 @@ export function renderTasks(filteredTasks, tasks, updateView) {
             li.replaceChild(textarea, span);
             textarea.focus();
             const resizeTextarea = () => {
-                textarea.style.height = 'auto'; // reset height
+                textarea.style.height = 'auto';
                 textarea.style.height = (textarea.scrollHeight) + 'px';
             };
 
