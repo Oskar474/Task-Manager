@@ -1,0 +1,26 @@
+@use './variables' as *;
+
+@mixin button-main($background-color) {
+  background: $background-color;
+  padding: 0.5rem 1rem;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  transition: transform 0.3s;
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+@mixin form-input {
+  margin-right: $spacing;
+  flex: 1;
+  padding: 0.5rem;
+  border-radius: 10px;
+  border: 2px solid black;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  &:focus {
+    box-shadow: 0 0 4px $secondary-color;
+  }
+}

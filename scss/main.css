@@ -13,6 +13,11 @@ body {
 
 h1 {
   font-size: 2rem;
+  padding-bottom: 1rem;
+  color: #656464;
+}
+h1 i.fas {
+  color: inherit;
 }
 
 button, input, select {
@@ -21,42 +26,6 @@ button, input, select {
 
 #task-list li {
   font-size: 1rem;
-}
-
-@media (max-width: 768px) {
-  body {
-    font-size: 15px;
-  }
-  h1 {
-    font-size: 1.75rem;
-  }
-  button, input, select {
-    font-size: 0.95rem;
-  }
-  #task-list li {
-    font-size: 0.95rem;
-  }
-}
-@media (max-width: 480px) {
-  body {
-    font-size: 14px;
-  }
-  h1 {
-    font-size: 1.5rem;
-  }
-  button, input, select {
-    font-size: 0.9rem;
-  }
-  #task-list li {
-    font-size: 0.9rem;
-  }
-}
-h1 {
-  padding-bottom: 1rem;
-  color: #656464;
-}
-h1 i.fas {
-  color: inherit;
 }
 
 .container {
@@ -69,6 +38,14 @@ h1 i.fas {
   padding: 1rem;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.footer {
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid #ddd;
+  text-align: center;
+  font-size: 0.9rem;
 }
 
 #task-form {
@@ -156,7 +133,6 @@ h1 i.fas {
   border: none;
   border-radius: 4px;
   transition: transform 0.3s;
-  flex: 0 0 auto;
 }
 .controls ::file-selector-button:hover {
   transform: scale(1.05);
@@ -181,6 +157,10 @@ h1 i.fas {
 }
 #task-list li.dragging {
   cursor: grabbing;
+  background: #e0f7fa;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  opacity: 1;
+  transform: scale(1.02);
 }
 #task-list li .task-content {
   width: 75%;
@@ -192,13 +172,6 @@ h1 i.fas {
 }
 #task-list li.completed .task-content {
   text-decoration: line-through;
-}
-#task-list li.dragging {
-  background: #e0f7fa;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-  opacity: 1;
-  transform: scale(1.02);
-  cursor: grabbing;
 }
 #task-list li .actions {
   display: flex;
@@ -221,7 +194,7 @@ h1 i.fas {
 }
 #task-list li .actions .checkbox-icon {
   display: flex;
-  align-items: center; /* vertically center */
+  align-items: center;
   cursor: pointer;
   font-size: 20px;
   color: #007acc;
@@ -237,12 +210,33 @@ h1 i.fas {
   max-width: 80%;
 }
 
-.footer {
-  margin-top: auto;
-  padding-top: 1rem;
-  border-top: 1px solid #ddd;
-  text-align: center;
-  font-size: 0.9rem;
+@media (max-width: 768px) {
+  body {
+    font-size: 15px;
+  }
+  h1 {
+    font-size: 1.75rem;
+  }
+  button, input, select {
+    font-size: 0.95rem;
+  }
+  #task-list li {
+    font-size: 0.95rem;
+  }
+}
+@media (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+  h1 {
+    font-size: 1.5rem;
+  }
+  button, input, select {
+    font-size: 0.9rem;
+  }
+  #task-list li {
+    font-size: 0.9rem;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */

@@ -1,0 +1,33 @@
+@use './variables' as *;
+@use './mixins' as *;
+
+
+@media (max-width: $tablet) {
+  body {
+    font-size: 15px;
+  }
+  h1 {
+    font-size: 1.75rem;
+  }
+  button, input, select {
+    font-size: 0.95rem;
+  }
+  #task-list li {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: $mobile) {
+  body {
+    font-size: 14px;
+  }
+  h1 {
+    font-size: 1.5rem;
+  }
+  button, input, select {
+    font-size: 0.9rem;
+  }
+  #task-list li {
+    font-size: 0.9rem;
+  }
+}

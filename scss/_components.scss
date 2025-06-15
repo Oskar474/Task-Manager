@@ -1,0 +1,132 @@
+@use './variables' as *;
+@use './mixins' as *;
+
+#task-form {
+  display: flex;
+  margin-bottom: $spacing;
+
+  input {
+    flex: 1 1 auto;
+    @include form-input();
+  }
+
+  button {
+    @include button-main($primary-color);
+  }
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: $spacing;
+
+  select {
+    text-indent: 1px;
+    text-overflow: '';
+    background: $primary-color;
+    padding: 0.5rem 1rem;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    transition: transform 0.3s;
+
+    &:hover {
+      background-color: #0067ad;
+      transition: background-color 0.3s;
+    }
+  }
+
+  input {
+    @include form-input();
+    margin-right: 0.5rem;
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  #import-file {
+    display: none;
+  }
+
+  button {
+    @include button-main($secondary-color);
+  }
+
+  ::file-selector-button {
+    @include button-main($primary-color);
+
+    &:hover {
+      transform: scale(1);
+      background-color: #045185;
+      transition: background-color 0.3s;
+    }
+  }
+}
+
+#task-list {
+  list-style: none;
+
+  li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem;
+    border-bottom: 1px solid #ccc;
+    background: #fff;
+    cursor: grab;
+
+    &.dragging {
+      cursor: grabbing;
+      background: #e0f7fa;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+      opacity: 1;
+      transform: scale(1.02);
+    }
+
+    .task-content {
+      width: 75%;
+      word-wrap: break-word;
+      white-space: normal;
+    }
+
+    &.completed {
+      color: $completed-color;
+
+      .task-content {
+        text-decoration: line-through;
+      }
+    }
+
+    .actions {
+      display: flex;
+      gap: 0.5rem;
+
+      > input {
+        margin-right: $spacing;
+      }
+
+      button {
+        @include button-main($secondary-color);
+        padding: 0.5rem;
+      }
+
+      .checkbox-icon {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        font-size: 20px;
+        color: $primary-color;
+        margin-right: 10px;
+      }
+    }
+  }
+}
+
+.edit-textarea {
+  font: inherit;
+  border: 1px solid white;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  border-radius: 4px;
+  max-width: 80%;
+}
