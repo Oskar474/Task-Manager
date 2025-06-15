@@ -5,13 +5,65 @@
 }
 
 body {
+  font-size: 16px;
   font-family: Arial, sans-serif;
-  background: #f4f4f4;
+  background: linear-gradient(to right, #6a11cb, #2575fc);
   padding: 1rem;
 }
 
+h1 {
+  font-size: 2rem;
+}
+
+button, input, select {
+  font-size: 1rem;
+}
+
+#task-list li {
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 15px;
+  }
+  h1 {
+    font-size: 1.75rem;
+  }
+  button, input, select {
+    font-size: 0.95rem;
+  }
+  #task-list li {
+    font-size: 0.95rem;
+  }
+}
+@media (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+  h1 {
+    font-size: 1.5rem;
+  }
+  button, input, select {
+    font-size: 0.9rem;
+  }
+  #task-list li {
+    font-size: 0.9rem;
+  }
+}
+h1 {
+  padding-bottom: 1rem;
+  color: #656464;
+}
+h1 i.fas {
+  color: inherit;
+}
+
 .container {
-  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  max-width: 800px;
   margin: 0 auto;
   background: white;
   padding: 1rem;
@@ -19,21 +71,33 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-form {
+#task-form {
   display: flex;
-  gap: 1rem;
   margin-bottom: 1rem;
 }
-form input {
+#task-form input {
+  flex: 1 1 auto;
+  margin-right: 1rem;
   flex: 1;
   padding: 0.5rem;
+  border-radius: 10px;
+  border: 2px solid black;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
-form button {
-  padding: 0.5rem 1rem;
+#task-form input:focus {
+  box-shadow: 0 0 4px #4e4ba9;
+}
+#task-form button {
   background: #007acc;
+  padding: 0.5rem 1rem;
   color: white;
   border: none;
   border-radius: 4px;
+  transition: transform 0.3s;
+}
+#task-form button:hover {
+  transform: scale(1.05);
 }
 
 .controls {
@@ -41,6 +105,66 @@ form button {
   flex-wrap: wrap;
   gap: 0.5rem;
   margin-bottom: 1rem;
+}
+.controls select {
+  text-indent: 1px;
+  text-overflow: "";
+  background: #007acc;
+  padding: 0.5rem 1rem;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  transition: transform 0.3s;
+}
+.controls select:hover {
+  background-color: #0067ad;
+  transition: background-color 0.3s;
+}
+.controls input {
+  margin-right: 1rem;
+  flex: 1;
+  padding: 0.5rem;
+  border-radius: 10px;
+  border: 2px solid black;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  margin-right: 0.5rem;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.controls input:focus {
+  box-shadow: 0 0 4px #4e4ba9;
+}
+.controls #import-file {
+  display: none;
+}
+.controls button {
+  background: #4e4ba9;
+  padding: 0.5rem 1rem;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  transition: transform 0.3s;
+}
+.controls button:hover {
+  transform: scale(1.05);
+}
+.controls ::file-selector-button {
+  background: #007acc;
+  padding: 0.5rem 1rem;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  transition: transform 0.3s;
+  flex: 0 0 auto;
+}
+.controls ::file-selector-button:hover {
+  transform: scale(1.05);
+}
+.controls ::file-selector-button:hover {
+  transform: scale(1);
+  background-color: #045185;
+  transition: background-color 0.3s;
 }
 
 #task-list {
@@ -53,14 +177,72 @@ form button {
   padding: 0.5rem;
   border-bottom: 1px solid #ccc;
   background: #fff;
+  cursor: grab;
+}
+#task-list li.dragging {
+  cursor: grabbing;
+}
+#task-list li .task-content {
+  width: 75%;
+  word-wrap: break-word;
+  white-space: normal;
 }
 #task-list li.completed {
-  text-decoration: line-through;
   color: #888;
+}
+#task-list li.completed .task-content {
+  text-decoration: line-through;
+}
+#task-list li.dragging {
+  background: #e0f7fa;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  opacity: 1;
+  transform: scale(1.02);
+  cursor: grabbing;
 }
 #task-list li .actions {
   display: flex;
   gap: 0.5rem;
+}
+#task-list li .actions > input {
+  margin-right: 1rem;
+}
+#task-list li .actions button {
+  background: #4e4ba9;
+  padding: 0.5rem 1rem;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  transition: transform 0.3s;
+  padding: 0.5rem;
+}
+#task-list li .actions button:hover {
+  transform: scale(1.05);
+}
+#task-list li .actions .checkbox-icon {
+  display: flex;
+  align-items: center; /* vertically center */
+  cursor: pointer;
+  font-size: 20px;
+  color: #007acc;
+  margin-right: 10px;
+}
+
+.edit-textarea {
+  font: inherit;
+  border: 1px solid white;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  border-radius: 4px;
+  max-width: 80%;
+}
+
+.footer {
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid #ddd;
+  text-align: center;
+  font-size: 0.9rem;
 }
 
 /*# sourceMappingURL=main.css.map */
