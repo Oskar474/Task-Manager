@@ -11,6 +11,14 @@ body {
   padding: 1rem;
 }
 
+button, input, select {
+  font-size: 1rem;
+}
+
+#task-list li {
+  font-size: 1rem;
+}
+
 h1 {
   font-size: 2rem;
   padding-bottom: 1.5rem;
@@ -20,14 +28,6 @@ h1 {
 }
 h1 i.fas {
   color: inherit;
-}
-
-button, input, select {
-  font-size: 1rem;
-}
-
-#task-list li {
-  font-size: 1rem;
 }
 
 .container {
